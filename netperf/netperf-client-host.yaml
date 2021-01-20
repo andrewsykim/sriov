@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netperf-client-host
+spec:
+  hostNetwork: true
+  containers:
+  - name: netperf-client
+    command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+    image: leannet/k8s-netperf
+
+

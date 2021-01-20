@@ -1,0 +1,20 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: sriov-passthrough
+  annotations:
+    k8s.v1.cni.cncf.io/resourceName: intel.com/x550
+spec:
+  config: '{
+      "cniVersion": "0.3.0",
+      "type": "host-device",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "192.168.205.0/24",
+        "routes": [{
+                "dst": "0.0.0.0/0"
+        }],
+        "gateway": "192.168.205.1"
+        }
+    }'
